@@ -9,6 +9,11 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'org.openjfx.javafxplugin' version '0.0.5'
+}
+
+javafx {
+    modules = [ 'javafx.controls' ]
 }
 
 sourceCompatibility = '1.8'
@@ -29,7 +34,7 @@ dependencies {
     implementation(group: "edu.wpi.first.shuffleboard.plugin", name: "networktables", version: "1.0.0")
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    // testImplementation 'junit:junit:4.12'
 }
 
 jar {
