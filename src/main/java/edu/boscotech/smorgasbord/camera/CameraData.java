@@ -27,7 +27,7 @@ public final class CameraData extends ComplexData<CameraData> {
     return fps;
   }
 
-  public int getCompression() {
+  public int getQuality() {
     return quality;
   }
 
