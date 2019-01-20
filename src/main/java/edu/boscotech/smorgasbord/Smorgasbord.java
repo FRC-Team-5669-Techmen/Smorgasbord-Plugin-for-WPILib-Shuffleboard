@@ -3,12 +3,48 @@
  */
 package edu.boscotech.smorgasbord;
 
+import java.util.List;
+import java.util.Map;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+
+import edu.boscotech.smorgasbord.camera.CameraType;
+import edu.boscotech.smorgasbord.camera.SimpleCameraWidget;
+import edu.wpi.first.shuffleboard.api.data.DataType;
 import edu.wpi.first.shuffleboard.api.plugin.Description;
 import edu.wpi.first.shuffleboard.api.plugin.Plugin;
+import edu.wpi.first.shuffleboard.api.plugin.Requires;
+import edu.wpi.first.shuffleboard.api.widget.ComponentType;
+import edu.wpi.first.shuffleboard.api.widget.WidgetType;
 
+@Requires(group = "edu.wpi.first.shuffleboard", name = "Base", 
+    minVersion = "1.0.0")
+@Requires(group = "edu.wpi.first.shuffleboard", name = "NetworkTables", 
+    minVersion = "1.0.0")
 @Description(group = "edu.boscotech", name = "Smorgasbord", version = "0.0.2", 
     summary = "Adds a bunch of extra shuffleboard widgets.")
 public class Smorgasbord extends Plugin {
     @Override
-    public void onLoad() { }
+    public List<DataType> getDataTypes() {
+        return ImmutableList.of(
+            CameraType.instance
+        );
+    }
+
+    @Override
+    public List<ComponentType> getComponents() {
+        return ImmutableList.of(
+            WidgetType.forAnnotatedWidget(SimpleCameraWidget.class)
+        );
+    }
+
+    @Override
+    public Map<DataType, ComponentType> getDefaultComponents() {
+        return ImmutableMap.<DataType, ComponentType>builder()
+            .put(
+                CameraType.instance, 
+                WidgetType.forAnnotatedWidget(SimpleCameraWidget.class)
+            ).build();
+    }
 }
