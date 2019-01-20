@@ -25,6 +25,8 @@ repositories {
 
 dependencies {
     implementation(group: "edu.wpi.first.shuffleboard", name: "api", version: "1.3.1")
+    implementation(group: "edu.wpi.first.shuffleboard.plugin", name: "base", version: "1.0.0")
+    implementation(group: "edu.wpi.first.shuffleboard.plugin", name: "networktables", version: "1.0.0")
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
